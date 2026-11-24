@@ -5,9 +5,50 @@
 <p><strong>一言でいうと：</strong> <a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>が今どの段階にいるかを示す<a class="term-link" href="../terms/project.html" title="用語解説：Project（GitHub Projects）">Project</a>の項目です。</p>
 </blockquote>
 <h2>MarkNestでは</h2>
-<p>MarkNestでは<a class="term-link" href="../terms/backlog.html" title="用語解説：Backlog（バックログ）">Backlog</a>・<a class="term-link" href="../terms/ready.html" title="用語解説：Ready（レディ）">Ready</a>・<a class="term-link" href="../terms/in-progress.html" title="用語解説：In Progress（作業中）">In Progress</a>・<a class="term-link" href="../terms/in-review.html" title="用語解説：In Review（レビュー中）">In Review</a>・<a class="term-link" href="../terms/blocked.html" title="用語解説：Blocked（停止中）">Blocked</a>・<a class="term-link" href="../terms/done.html" title="用語解説：Done（受け入れ完了）">Done</a>を使います。</p>
+<p>MarkNestでは次の6つのStatusを使います。</p>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>どういう状態か</th>
+<th>メンバーの行動</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="term-link" href="../terms/backlog.html" title="用語解説：Backlog（バックログ）">Backlog</a></td>
+<td>採用済みだが着手の条件が不十分・未確認</td>
+<td>無理に始めず、必要な前提を確認</td>
+</tr>
+<tr>
+<td><a class="term-link" href="../terms/ready.html" title="用語解説：Ready（レディ）">Ready</a></td>
+<td>仕様・依存・確認方法が揃った<strong>未割り当て</strong>の着手可能<a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a></td>
+<td>自分で選び、着手時に<a class="term-link" href="../terms/assignees.html" title="用語解説：Assignees（担当者）">Assignee</a>を設定</td>
+</tr>
+<tr>
+<td><a class="term-link" href="../terms/in-progress.html" title="用語解説：In Progress（作業中）">In Progress</a></td>
+<td>担当者が実装・検証中</td>
+<td>進捗や阻害要因をIssueに残す</td>
+</tr>
+<tr>
+<td><a class="term-link" href="../terms/in-review.html" title="用語解説：In Review（レビュー中）">In Review</a></td>
+<td><a class="term-link" href="../terms/pull-request.html" title="用語解説：Pull Request（PR）">PR</a>作成済みで<a class="term-link" href="../terms/ci.html" title="用語解説：CI（継続的インテグレーション）">CI</a>・AI・人の確認を受けている</td>
+<td>レビューへ対応し、必要なテストを再実行</td>
+</tr>
+<tr>
+<td><a class="term-link" href="../terms/blocked.html" title="用語解説：Blocked（停止中）">Blocked</a></td>
+<td>続行を妨げる問題が確認された</td>
+<td>原因・影響・必要な判断を記録</td>
+</tr>
+<tr>
+<td><a class="term-link" href="../terms/done.html" title="用語解説：Done（受け入れ完了）">Done</a></td>
+<td>完成条件と必要な受け入れ確認を満たした</td>
+<td><strong>人による確認後</strong>にClose／Doneへ</td>
+</tr>
+</tbody>
+</table>
 <h2>どこで見る・使う？</h2>
 <p><a href="https://github.com/users/eash-misoni/projects/3/views/1">Project #3</a>の<strong>Status列</strong>（Table表示）または<strong>列の見出し</strong>（Board表示）を見ます。Tableで列が隠れていれば<code>View</code>→<code>Fields</code>で確認します。</p>
 <h2>間違えやすい点</h2>
-<p><a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>の<a class="term-link" href="../terms/open-closed.html" title="用語解説：Open / Closed">Open/Closed</a>は別の状態です。優先度（<a class="term-link" href="../terms/priority.html" title="用語解説：Priority（優先度）">Priority</a>）も別の項目です。</p>
+<p><a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>の<a class="term-link" href="../terms/open-closed.html" title="用語解説：Open / Closed">Open/Closed</a>は別の状態です。優先度（<a class="term-link" href="../terms/priority.html" title="用語解説：Priority（優先度）">Priority</a>）も別の項目です。「Openだから<a class="term-link" href="../terms/ready.html" title="用語解説：Ready（レディ）">Ready</a>」「Highだから今着手できる」とは判断しません。</p>
 <nav class="footnav" aria-label="ナビゲーション"><span><a href="index.html">← 用語索引</a></span><span>本文へはブラウザの「戻る」</span></nav></article><footer class="footer">MarkNest Team Wiki v0.10 · r3仕様（2026-11-16） · ローカルHTML／用語ごとに独立ページ</footer></div></main></div><script src="../assets/site.js"></script></body></html>
