@@ -1,28 +1,92 @@
 <!doctype html><html lang="ja" data-root="../"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#103627"><meta name="description" content="MarkNest Team Wiki：GitHubチーム開発の手順と用語をリンクで調べる r3準拠Wiki"><title>ローカル環境：Chrome拡張を起動する | MarkNest Team Wiki</title><link rel="stylesheet" href="../assets/site.css"></head><body>
 <div class="menu-toggle"><button id="menu-btn" aria-label="目次を表示" aria-expanded="false">☰</button> MarkNest Team Wiki</div><div class="menu-shade" id="shade"></div>
 <div class="layout"><aside class="sidebar" id="sidebar"><a class="brand" href="../index.html"><span class="brand-mark">M</span><span><span class="brand-name" style="display:block">MarkNest</span><span class="brand-sub" style="display:block">TEAM WIKI · r3</span></span></a><a class="nav-link" href="../../index.html">開発資料ポータルへ</a><div class="nav-caption">開発ガイド</div><nav aria-label="ガイドの目次"><a href="../articles/overview.html" class="nav-link">はじめに</a><a href="../articles/first-task.html" class="nav-link">最初の作業</a><a href="../articles/workflow.html" class="nav-link">開発フロー</a><a href="../articles/issues-and-prs.html" class="nav-link">IssueとPR</a><a href="../articles/setup.html" class="nav-link current">ローカル環境</a><a href="../articles/specs.html" class="nav-link">設計資料</a><a href="../articles/architecture.html" class="nav-link">役割・構成</a><a href="../articles/r3-rules.html" class="nav-link">r3の重要ルール</a><a href="../articles/sync.html" class="nav-link">AWS同期</a><a href="../articles/ai-review.html" class="nav-link">AIとレビュー</a><a href="../articles/troubleshooting.html" class="nav-link">困ったとき</a><a href="../articles/safety-faq.html" class="nav-link">安全とFAQ</a></nav><div class="nav-caption">用語</div><nav><a class="nav-link" href="../terms/index.html">用語から探す（57語）</a></nav><div class="sidebar-foot">v0.10 · 用語リンク型 · 2026-11-18<br>元v0.6が未発見の再構築版。現在値はGitHubで確認。<br><a href="https://github.com/eash-misoni/MarkNest">MarkNestリポジトリ</a></div></aside>
-<main class="main"><div class="reading"><div class="top"><div class="crumb"><a href="../index.html">ホーム</a> / ローカル環境：Chrome拡張を起動する</div><div class="search-wrap"><input id="site-search" class="search" type="search" placeholder="ガイド・用語を検索（Ctrl+K）" aria-label="Wiki内を検索" autocomplete="off"><div id="search-results" class="search-results" hidden></div></div></div><header class="hero"><div class="eyebrow">MARKNEST / TEAM HANDBOOK</div><h1>ローカル環境：Chrome拡張を起動する</h1><p>本文の用語リンクから意味・画面での場所を確認できます。</p></header><div class="hint">知らない言葉は、本文中の<span class="term-link">点線付きリンク</span>をクリックすると解説ページへ移動できます。ブラウザの「戻る」で読んでいた位置へ戻れます。</div><article class="article"><p>この節は<strong>本体<a class="term-link" href="../terms/repository.html" title="用語解説：リポジトリ（Repository）">リポジトリ</a>の起動確認段階</strong>の手順です。完成機能を保証する手順ではありません。</p>
-<h2>用意するもの</h2>
-<ul>
-<li>PC版Google Chrome（開発用プロフィールを推奨）</li>
-<li>Node.js 22系、<a class="term-link" href="../terms/npm.html" title="用語解説：npm">npm</a>、<a class="term-link" href="../terms/git.html" title="用語解説：Git">Git</a>、VS Codeなどのエディタ</li>
-<li><code>eash-misoni/MarkNest</code> <a class="term-link" href="../terms/repository.html" title="用語解説：リポジトリ（Repository）">リポジトリ</a>の<a class="term-link" href="../terms/clone.html" title="用語解説：clone（クローン）">クローン</a></li>
-</ul>
-<h2>実行する</h2>
+<main class="main"><div class="reading"><div class="top"><div class="crumb"><a href="../index.html">ホーム</a> / ローカル環境：Chrome拡張を起動する</div><div class="search-wrap"><input id="site-search" class="search" type="search" placeholder="ガイド・用語を検索（Ctrl+K）" aria-label="Wiki内を検索" autocomplete="off"><div id="search-results" class="search-results" hidden></div></div></div><header class="hero"><div class="eyebrow">MARKNEST / TEAM HANDBOOK</div><h1>ローカル環境：Chrome拡張を起動する</h1><p>本文の用語リンクから意味・画面での場所を確認できます。</p></header><div class="hint">知らない言葉は、本文中の<span class="term-link">点線付きリンク</span>をクリックすると解説ページへ移動できます。ブラウザの「戻る」で読んでいた位置へ戻れます。</div><article class="article"><p>このページのゴールは、<strong>自分のPCにMarkNestを準備し、Chromeで拡張機能を開き、テストを実行できるようにすること</strong>です。最初の環境準備は基本的に一度で構いません。</p>
+<p>ここでは本番のMarkNest本体を準備します。練習<a class="term-link" href="../terms/repository.html" title="用語解説：リポジトリ（Repository）">リポジトリ</a>の演習中は、<a href="https://github.com/eash-misoni/marknest-git-practice/blob/main/README.md">練習用README</a>に従ってください。</p>
+<h2>1. 必要なソフトを用意する</h2>
+<table>
+<thead>
+<tr>
+<th>ソフト</th>
+<th>何に使う？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC版Google Chrome</td>
+<td>作成した<a class="term-link" href="../terms/chrome-extension.html" title="用語解説：Chrome拡張機能">Chrome拡張機能</a>を動かす。開発用プロフィールを推奨</td>
+</tr>
+<tr>
+<td><a class="term-link" href="../terms/git.html" title="用語解説：Git">Git</a></td>
+<td><a class="term-link" href="../terms/github.html" title="用語解説：GitHub">GitHub</a>からコードを取得し、変更履歴を管理する</td>
+</tr>
+<tr>
+<td>Node.js 22系・<a class="term-link" href="../terms/npm.html" title="用語解説：npm">npm</a></td>
+<td>JavaScriptのテストや型チェックを実行する。npmはNode.jsと一緒に導入される</td>
+</tr>
+<tr>
+<td>VS Codeなどのエディタ</td>
+<td>ファイルを開いてコードを書く</td>
+</tr>
+</tbody>
+</table>
+<p>すでに導入済みなら再インストールは不要です。GitHubにログインし、<a href="https://github.com/eash-misoni/MarkNest">MarkNest本体リポジトリ</a>を開けることも確認してください。404が出る場合は招待・アクセス権を確認します。</p>
+<h2>2. ターミナルを開いて準備を確認する</h2>
+<p>ターミナルとは、文字でコマンドを入力してPCを操作する画面です。WindowsならPowerShell、VS Codeならメニューの「ターミナル」→「新しいターミナル」を使えます。コマンドは1行ずつ入力し、Enterを押します。</p>
+<pre><code class="language-bash">git --version
+node --version
+npm --version
+</code></pre>
+<p>それぞれバージョン番号が表示されれば利用できます。Node.jsはv22で始まるバージョンを使います。コマンドが見つからない場合はインストール状況を確認し、ターミナルやVS Codeを開き直してください。</p>
+<h2>3. GitHubからコードを取得する</h2>
+<p>初回は、作業用フォルダを置きたい場所（例：ドキュメント）でターミナルを開き、以下を実行します。</p>
 <pre><code class="language-bash">git clone https://github.com/eash-misoni/MarkNest.git
 cd MarkNest
-npm ci
+</code></pre>
+<p><a class="term-link" href="../terms/clone.html" title="用語解説：clone（クローン）">clone</a>は<a class="term-link" href="../terms/github.html" title="用語解説：GitHub">GitHub</a>にある<a class="term-link" href="../terms/repository.html" title="用語解説：リポジトリ（Repository）">リポジトリ</a>を、自分のPCへ変更履歴ごとコピーする操作です。MarkNestというフォルダが作成されます。cdはターミナルの作業場所をそのフォルダへ移動します。</p>
+<p>すでにcloneした人はもう一度cloneせず、VS Codeの「ファイル」→「フォルダーを開く」で既存のMarkNestフォルダを選んでください。その中のターミナルを使います。最新の<a class="term-link" href="../terms/main.html" title="用語解説：mainブランチ">main</a>を取得する操作は<a href="issues-and-prs.html">IssueとPR</a>で説明します。</p>
+<p>GitHubの認証を求められたら、アクセス権を持つ自分のアカウントで認証します。パスワードやトークンを他のメンバー・チャットへ渡さないでください。</p>
+<h2>4. 検査に必要なツールを準備する</h2>
+<p>ここからは、<strong>MarkNestフォルダの一番上（package.jsonがある場所）</strong>でコマンドを入力します。VS CodeでMarkNestを開くと、その場所のターミナルを利用できます。</p>
+<pre><code class="language-bash">npm ci
 npm run check
 </code></pre>
+<p><a class="term-link" href="../terms/npm.html" title="用語解説：npm">npm</a> ciはpackage-lock.jsonに記載されたバージョンの検査用ツールを取得します。初回や依存関係が更新されたときに実行します。アプリを起動するコマンドではありません。</p>
+<p>npm run checkは構文・<a class="term-link" href="../terms/jsdoc.html" title="用語解説：JSDoc">JSDoc</a>型・単体テストをまとめて実行します。エラーがなく最後まで終了し、テスト失敗が0件であることを確認してください。失敗した場合は最初のエラー内容を読み、原因が分からなければ相談します。</p>
+<h2>5. Chromeに拡張機能を読み込ませる</h2>
+<p>Chromeのアドレスバーに次を入力して拡張機能管理画面を開きます。これはターミナル用のコマンドではありません。</p>
+<pre><code class="language-text">chrome://extensions/
+</code></pre>
 <ol>
-<li>Chromeで<code>chrome://extensions/</code>を開き、「デベロッパーモード」をON。</li>
+<li>画面右上の「デベロッパー モード」をONにする。</li>
 <li>「パッケージ化されていない拡張機能を読み込む」を押す。</li>
-<li><strong><a class="term-link" href="../terms/repository.html" title="用語解説：リポジトリ（Repository）">リポジトリ</a>の<code>extension/</code>フォルダ</strong>を選択する。<code>manifest.json</code>が直接入っている場所です。</li>
-<li>MarkNestアイコンからPopupを開き、起動確認用の操作を試す。</li>
-<li>Popupを右クリックして「検証」を開き、<a class="term-link" href="../terms/console.html" title="用語解説：Console（コンソール）">Console</a>のエラーを確認する。</li>
-<li>JSを編集したら拡張カードを「更新」し、Popupを開き直す。</li>
+<li>PCに保存したMarkNestの中にある <strong>extensionフォルダ</strong> を選択する。</li>
+<li>拡張機能一覧にMarkNestのカードが追加されたことを確認する。</li>
 </ol>
-<h2>検査コマンドの使い分け</h2>
+<p>フォルダ構成は次のとおりです。選ぶのはMarkNest全体でもmanifest.json単体でもなく、manifest.jsonが直接入っているextensionフォルダです。</p>
+<pre><code class="language-text">MarkNest/
+  package.json
+  extension/       ← このフォルダを選ぶ
+    manifest.json
+    popup.html
+    popup.js
+    popup.css
+</code></pre>
+<p>以前の独立教材Bookmark Explorerのexplorerフォルダとは別です。練習用のHTMLページを開くだけの場合も、この拡張機能の読み込みは不要です。</p>
+<h2>6. 起動できたか確認する</h2>
+<p>Chrome右上の拡張機能アイコン（パズルの形）をクリックし、MarkNestを選びます。必要ならピン留めしてください。小さな画面が開きます。この画面をPopupと呼びます。</p>
+<p>現時点の最小起動画面では「JavaScriptの動作を確認」ボタンを押すと「JavaScriptの動作を確認できました。」と表示されます。画面が開き、ボタンが動くことが今回の起動確認です。</p>
+<p>Popup内を右クリックして「検証」を選び、開発者ツールの<a class="term-link" href="../terms/console.html" title="用語解説：Console（コンソール）">Console</a>タブを確認します。ここにはプログラムのログやエラーが表示されます。赤いエラーがある場合は内容を確認しましょう。</p>
+<p><strong>最小Popupの起動確認には<a class="term-link" href="../terms/aws.html" title="用語解説：AWS">AWS</a>接続や<a class="term-link" href="../terms/cognito.html" title="用語解説：Amazon Cognito">Cognito</a>トークンは不要です。</strong> 分類・ブックマーク操作・同期などの完成を確認する手順ではありません。実データを使う検証は、テスト専用Chromeプロフィールとダミーデータを用意してから行います。</p>
+<h2>7. コードを変更した後はどうする？</h2>
+<p>毎回<a class="term-link" href="../terms/clone.html" title="用語解説：clone（クローン）">clone</a>や拡張機能の新規登録をする必要はありません。作業用<a class="term-link" href="../terms/branch.html" title="用語解説：ブランチ（branch）">ブランチ</a>でファイルを編集して保存し、次の順番で確認します。</p>
+<ol>
+<li>Chromeで再び拡張機能管理画面を開く。</li>
+<li>MarkNestカードの「更新」を押す（拡張機能を再読み込みする操作）。</li>
+<li>Popupを開き直して、変更した箇所を試す。</li>
+<li><a class="term-link" href="../terms/console.html" title="用語解説：Console（コンソール）">Console</a>のエラーを確認し、ターミナルで<a class="term-link" href="../terms/npm.html" title="用語解説：npm">npm</a> run checkを実行する。</li>
+</ol>
+<p>検査コマンドの意味は次の表を参照してください。迷ったらnpm run checkでまとめて確認できます。</p>
 <table>
 <thead>
 <tr>
@@ -33,26 +97,57 @@ npm run check
 <tbody>
 <tr>
 <td><code>npm ci</code></td>
-<td>lockfileどおり依存関係を導入</td>
+<td>指定されたバージョンの依存ツールを導入</td>
 </tr>
 <tr>
 <td><code>npm run check:syntax</code></td>
-<td>JavaScriptの構文確認</td>
+<td>JavaScriptの構文に誤りがないか確認</td>
 </tr>
 <tr>
 <td><code>npm run check:types</code></td>
-<td><a class="term-link" href="../terms/jsdoc.html" title="用語解説：JSDoc">JSDoc</a>の型チェック（<code>checkJs</code>）</td>
+<td><a class="term-link" href="../terms/jsdoc.html" title="用語解説：JSDoc">JSDoc</a>の型定義とコードが矛盾しないか型チェック（<code>checkJs</code>）</td>
 </tr>
 <tr>
 <td><code>npm test</code></td>
-<td>Nodeの単体テスト</td>
+<td>Nodeの自動テストを実行し、期待した動作か確認</td>
 </tr>
 <tr>
 <td><code>npm run check</code></td>
-<td>上記の一括確認</td>
+<td>上記の構文・型・自動テストを一括実行</td>
 </tr>
 </tbody>
 </table>
-<p>環境構築で<a class="term-link" href="../terms/aws.html" title="用語解説：AWS">AWS</a>アカウントや<a class="term-link" href="../terms/cognito.html" title="用語解説：Amazon Cognito">Cognito</a>トークンを要求される場合は、<a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>の対象範囲を確認してください。<strong>最小Popupの起動確認にはAWS接続は不要</strong>です。ブックマークの実データを使う前に、テスト用Chromeプロフィールと非破壊的な確認方法を用意します。</p>
-<p>&lt;small&gt;参照：<a class="term-link" href="../terms/github.html" title="用語解説：GitHub">GitHub</a> READMEの「開発環境の構築」。実装が進んだ場合、必要なNodeバージョンや操作手順は最新のREADMEを優先してください。&lt;/small&gt;</p>
+<p>自動テストが成功してもChromeの画面操作まで確認したことにはなりません。<a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>の完成条件に合わせて、実際に試した操作と結果を記録してください。</p>
+<h2>困ったときの確認先</h2>
+<table>
+<thead>
+<tr>
+<th>症状</th>
+<th>最初に確認すること</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="term-link" href="../terms/clone.html" title="用語解説：clone（クローン）">clone</a>で404や403</td>
+<td><a class="term-link" href="../terms/github.html" title="用語解説：GitHub">GitHub</a>のアカウント・招待承諾・アクセス権</td>
+</tr>
+<tr>
+<td><a class="term-link" href="../terms/npm.html" title="用語解説：npm">npm</a>が見つからない</td>
+<td>Node.jsの導入状況・ターミナルの再起動</td>
+</tr>
+<tr>
+<td>npm ciが失敗する</td>
+<td>作業場所、ネット接続、proxyやnpm registry。lockfileを勝手に変更しない</td>
+</tr>
+<tr>
+<td>拡張機能を読み込めない</td>
+<td>extensionフォルダとmanifest.jsonの場所、Chromeのエラー表示</td>
+</tr>
+<tr>
+<td>修正したのに画面が変わらない</td>
+<td>ファイルを保存したか、拡張機能を更新したか、Popupを開き直したか</td>
+</tr>
+</tbody>
+</table>
+<p>さらに困ったら<a href="troubleshooting.html">困ったとき</a>を確認してください。実装が進んだ場合は、<a href="https://github.com/eash-misoni/MarkNest/blob/main/README.md">本体README</a>の最新の開発環境構築手順を優先します。</p>
 <nav class="footnav" aria-label="関連記事"><span><a href="issues-and-prs.html">← IssueとPR</a></span><span><a href="specs.html">設計資料 →</a></span></nav></article><footer class="footer">MarkNest Team Wiki v0.10 · r3仕様（2026-11-16） · ローカルHTML／用語ごとに独立ページ</footer></div></main></div><script src="../assets/site.js"></script></body></html>
