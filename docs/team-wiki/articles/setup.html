@@ -1,0 +1,58 @@
+<!doctype html><html lang="ja" data-root="../"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#103627"><meta name="description" content="MarkNest Team Wiki：GitHubチーム開発の手順と用語をリンクで調べる r3準拠Wiki"><title>ローカル環境：Chrome拡張を起動する | MarkNest Team Wiki</title><link rel="stylesheet" href="../assets/site.css"></head><body>
+<div class="menu-toggle"><button id="menu-btn" aria-label="目次を表示" aria-expanded="false">☰</button> MarkNest Team Wiki</div><div class="menu-shade" id="shade"></div>
+<div class="layout"><aside class="sidebar" id="sidebar"><a class="brand" href="../index.html"><span class="brand-mark">M</span><span><span class="brand-name" style="display:block">MarkNest</span><span class="brand-sub" style="display:block">TEAM WIKI · r3</span></span></a><a class="nav-link" href="../../index.html">開発資料ポータルへ</a><div class="nav-caption">開発ガイド</div><nav aria-label="ガイドの目次"><a href="../articles/overview.html" class="nav-link">はじめに</a><a href="../articles/first-task.html" class="nav-link">最初の作業</a><a href="../articles/workflow.html" class="nav-link">開発フロー</a><a href="../articles/issues-and-prs.html" class="nav-link">IssueとPR</a><a href="../articles/setup.html" class="nav-link current">ローカル環境</a><a href="../articles/specs.html" class="nav-link">設計資料</a><a href="../articles/architecture.html" class="nav-link">役割・構成</a><a href="../articles/r3-rules.html" class="nav-link">r3の重要ルール</a><a href="../articles/sync.html" class="nav-link">AWS同期</a><a href="../articles/ai-review.html" class="nav-link">AIとレビュー</a><a href="../articles/troubleshooting.html" class="nav-link">困ったとき</a><a href="../articles/safety-faq.html" class="nav-link">安全とFAQ</a></nav><div class="nav-caption">用語</div><nav><a class="nav-link" href="../terms/index.html">用語から探す（57語）</a></nav><div class="sidebar-foot">v0.10 · 用語リンク型 · 2026-11-18<br>元v0.6が未発見の再構築版。現在値はGitHubで確認。<br><a href="https://github.com/eash-misoni/MarkNest">MarkNestリポジトリ</a></div></aside>
+<main class="main"><div class="reading"><div class="top"><div class="crumb"><a href="../index.html">ホーム</a> / ローカル環境：Chrome拡張を起動する</div><div class="search-wrap"><input id="site-search" class="search" type="search" placeholder="ガイド・用語を検索（Ctrl+K）" aria-label="Wiki内を検索" autocomplete="off"><div id="search-results" class="search-results" hidden></div></div></div><header class="hero"><div class="eyebrow">MARKNEST / TEAM HANDBOOK</div><h1>ローカル環境：Chrome拡張を起動する</h1><p>本文の用語リンクから意味・画面での場所を確認できます。</p></header><div class="hint">知らない言葉は、本文中の<span class="term-link">点線付きリンク</span>をクリックすると解説ページへ移動できます。ブラウザの「戻る」で読んでいた位置へ戻れます。</div><article class="article"><p>この節は<strong>本体<a class="term-link" href="../terms/repository.html" title="用語解説：リポジトリ（Repository）">リポジトリ</a>の起動確認段階</strong>の手順です。完成機能を保証する手順ではありません。</p>
+<h2>用意するもの</h2>
+<ul>
+<li>PC版Google Chrome（開発用プロフィールを推奨）</li>
+<li>Node.js 22系、<a class="term-link" href="../terms/npm.html" title="用語解説：npm">npm</a>、<a class="term-link" href="../terms/git.html" title="用語解説：Git">Git</a>、VS Codeなどのエディタ</li>
+<li><code>eash-misoni/MarkNest</code> <a class="term-link" href="../terms/repository.html" title="用語解説：リポジトリ（Repository）">リポジトリ</a>の<a class="term-link" href="../terms/clone.html" title="用語解説：clone（クローン）">クローン</a></li>
+</ul>
+<h2>実行する</h2>
+<pre><code class="language-bash">git clone https://github.com/eash-misoni/MarkNest.git
+cd MarkNest
+npm ci
+npm run check
+</code></pre>
+<ol>
+<li>Chromeで<code>chrome://extensions/</code>を開き、「デベロッパーモード」をON。</li>
+<li>「パッケージ化されていない拡張機能を読み込む」を押す。</li>
+<li><strong><a class="term-link" href="../terms/repository.html" title="用語解説：リポジトリ（Repository）">リポジトリ</a>の<code>extension/</code>フォルダ</strong>を選択する。<code>manifest.json</code>が直接入っている場所です。</li>
+<li>MarkNestアイコンからPopupを開き、起動確認用の操作を試す。</li>
+<li>Popupを右クリックして「検証」を開き、<a class="term-link" href="../terms/console.html" title="用語解説：Console（コンソール）">Console</a>のエラーを確認する。</li>
+<li>JSを編集したら拡張カードを「更新」し、Popupを開き直す。</li>
+</ol>
+<h2>検査コマンドの使い分け</h2>
+<table>
+<thead>
+<tr>
+<th>コマンド</th>
+<th>主な用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>npm ci</code></td>
+<td>lockfileどおり依存関係を導入</td>
+</tr>
+<tr>
+<td><code>npm run check:syntax</code></td>
+<td>JavaScriptの構文確認</td>
+</tr>
+<tr>
+<td><code>npm run check:types</code></td>
+<td><a class="term-link" href="../terms/jsdoc.html" title="用語解説：JSDoc">JSDoc</a>の型チェック（<code>checkJs</code>）</td>
+</tr>
+<tr>
+<td><code>npm test</code></td>
+<td>Nodeの単体テスト</td>
+</tr>
+<tr>
+<td><code>npm run check</code></td>
+<td>上記の一括確認</td>
+</tr>
+</tbody>
+</table>
+<p>環境構築で<a class="term-link" href="../terms/aws.html" title="用語解説：AWS">AWS</a>アカウントや<a class="term-link" href="../terms/cognito.html" title="用語解説：Amazon Cognito">Cognito</a>トークンを要求される場合は、<a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>の対象範囲を確認してください。<strong>最小Popupの起動確認にはAWS接続は不要</strong>です。ブックマークの実データを使う前に、テスト用Chromeプロフィールと非破壊的な確認方法を用意します。</p>
+<p>&lt;small&gt;参照：<a class="term-link" href="../terms/github.html" title="用語解説：GitHub">GitHub</a> READMEの「開発環境の構築」。実装が進んだ場合、必要なNodeバージョンや操作手順は最新のREADMEを優先してください。&lt;/small&gt;</p>
+<nav class="footnav" aria-label="関連記事"><span><a href="issues-and-prs.html">← IssueとPR</a></span><span><a href="specs.html">設計資料 →</a></span></nav></article><footer class="footer">MarkNest Team Wiki v0.10 · r3仕様（2026-11-16） · ローカルHTML／用語ごとに独立ページ</footer></div></main></div><script src="../assets/site.js"></script></body></html>

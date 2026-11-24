@@ -1,0 +1,41 @@
+<!doctype html><html lang="ja" data-root="../"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#103627"><meta name="description" content="MarkNest Team Wiki：GitHubチーム開発の手順と用語をリンクで調べる r3準拠Wiki"><title>設計資料：どのファイルを見る？ | MarkNest Team Wiki</title><link rel="stylesheet" href="../assets/site.css"></head><body>
+<div class="menu-toggle"><button id="menu-btn" aria-label="目次を表示" aria-expanded="false">☰</button> MarkNest Team Wiki</div><div class="menu-shade" id="shade"></div>
+<div class="layout"><aside class="sidebar" id="sidebar"><a class="brand" href="../index.html"><span class="brand-mark">M</span><span><span class="brand-name" style="display:block">MarkNest</span><span class="brand-sub" style="display:block">TEAM WIKI · r3</span></span></a><a class="nav-link" href="../../index.html">開発資料ポータルへ</a><div class="nav-caption">開発ガイド</div><nav aria-label="ガイドの目次"><a href="../articles/overview.html" class="nav-link">はじめに</a><a href="../articles/first-task.html" class="nav-link">最初の作業</a><a href="../articles/workflow.html" class="nav-link">開発フロー</a><a href="../articles/issues-and-prs.html" class="nav-link">IssueとPR</a><a href="../articles/setup.html" class="nav-link">ローカル環境</a><a href="../articles/specs.html" class="nav-link current">設計資料</a><a href="../articles/architecture.html" class="nav-link">役割・構成</a><a href="../articles/r3-rules.html" class="nav-link">r3の重要ルール</a><a href="../articles/sync.html" class="nav-link">AWS同期</a><a href="../articles/ai-review.html" class="nav-link">AIとレビュー</a><a href="../articles/troubleshooting.html" class="nav-link">困ったとき</a><a href="../articles/safety-faq.html" class="nav-link">安全とFAQ</a></nav><div class="nav-caption">用語</div><nav><a class="nav-link" href="../terms/index.html">用語から探す（57語）</a></nav><div class="sidebar-foot">v0.10 · 用語リンク型 · 2026-11-18<br>元v0.6が未発見の再構築版。現在値はGitHubで確認。<br><a href="https://github.com/eash-misoni/MarkNest">MarkNestリポジトリ</a></div></aside>
+<main class="main"><div class="reading"><div class="top"><div class="crumb"><a href="../index.html">ホーム</a> / 設計資料：どのファイルを見る？</div><div class="search-wrap"><input id="site-search" class="search" type="search" placeholder="ガイド・用語を検索（Ctrl+K）" aria-label="Wiki内を検索" autocomplete="off"><div id="search-results" class="search-results" hidden></div></div></div><header class="hero"><div class="eyebrow">MARKNEST / TEAM HANDBOOK</div><h1>設計資料：どのファイルを見る？</h1><p>本文の用語リンクから意味・画面での場所を確認できます。</p></header><div class="hint">知らない言葉は、本文中の<span class="term-link">点線付きリンク</span>をクリックすると解説ページへ移動できます。ブラウザの「戻る」で読んでいた位置へ戻れます。</div><article class="article"><p><strong>最新版の製品仕様は<a class="term-link" href="../terms/r3.html" title="用語解説：r3（設計の版）">r3</a>（2026-11-16）です。</strong> <a class="term-link" href="../terms/repository.html" title="用語解説：リポジトリ（Repository）">リポジトリ</a>の<a href="https://github.com/eash-misoni/MarkNest/blob/main/docs/specs/r3-2026-11-16/README.md">現行設計README</a>から、総合ガイド・Excel・シーケンス図をたどってください。旧r2は経緯のために残っていますが、同時に正本とは扱いません。</p>
+<h2>設計書4冊の対応</h2>
+<table>
+<thead>
+<tr>
+<th>設計書</th>
+<th>参照する場面</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>8_DB設計.xlsx</strong></td>
+<td>ローカル<a class="term-link" href="../terms/indexeddb.html" title="用語解説：IndexedDB">IndexedDB</a>、サーバーPostgreSQLの保存構造を理解するとき</td>
+</tr>
+<tr>
+<td><strong>9_1_内部設計書_データ型・クラス定義.xlsx</strong></td>
+<td>JSの<a class="term-link" href="../terms/jsdoc.html" title="用語解説：JSDoc">JSDoc</a>型、<a class="term-link" href="../terms/session.html" title="用語解説：分類セッション">セッション</a>、<a class="term-link" href="../terms/api.html" title="用語解説：API">API</a>モデルを確認するとき</td>
+</tr>
+<tr>
+<td><strong>9_2_内部設計書_ファイル・<a class="term-link" href="../terms/module.html" title="用語解説：モジュール">モジュール</a>詳細.xlsx</strong></td>
+<td><a class="term-link" href="../terms/ui.html" title="用語解説：UI（ユーザーインターフェース）">UI</a>・Chrome管理・分類・同期などの<a class="term-link" href="../terms/function.html" title="用語解説：関数">関数</a>の責務を確認するとき</td>
+</tr>
+<tr>
+<td><strong>9_3_内部設計書_サーバー側.xlsx</strong></td>
+<td>FastAPIのAPI・認証・サーバー処理を確認するとき</td>
+</tr>
+</tbody>
+</table>
+<p>全体の理解には<strong><a class="term-link" href="../terms/r3.html" title="用語解説：r3（設計の版）">r3</a>総合ガイド</strong>を先に読み、実装時には担当機能の型・公開関数・保存先を調べる流れが効率的です。Excelのブック間リンクが開けない場合は総合ガイドの<strong>付録A〜D</strong>を参照してください。</p>
+<h2>仕様とコードの優先関係</h2>
+<ul>
+<li><strong>何を実装するべきか</strong>：最新の確定仕様（<a class="term-link" href="../terms/r3.html" title="用語解説：r3（設計の版）">r3</a>）と対象<a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>の承認済み範囲。</li>
+<li><strong>どう使うべきか</strong>：現在の型と公開<a class="term-link" href="../terms/function.html" title="用語解説：関数">関数</a>の契約、関連する既存コード。</li>
+<li><strong>何が実装済みか</strong>：<a class="term-link" href="../terms/main.html" title="用語解説：mainブランチ">main</a><a class="term-link" href="../terms/branch.html" title="用語解説：ブランチ（branch）">ブランチ</a>、<a class="term-link" href="../terms/pull-request.html" title="用語解説：Pull Request（PR）">PR</a>、<a class="term-link" href="../terms/ci.html" title="用語解説：CI（継続的インテグレーション）">CI</a>、Chrome・<a class="term-link" href="../terms/aws.html" title="用語解説：AWS">AWS</a>実機の検証記録。</li>
+<li><strong>何が未決定か</strong>：r3総合ガイドの未確定事項。勝手に仕様として実装しない。</li>
+</ul>
+<p>資料が更新された場合は、担当Issue・PRに「どの章・関数・フィールドが変わったか」を残してください。<strong>設計書に存在することと、コードが動くことは別</strong>です。</p>
+<nav class="footnav" aria-label="関連記事"><span><a href="setup.html">← ローカル環境</a></span><span><a href="architecture.html">役割・構成 →</a></span></nav></article><footer class="footer">MarkNest Team Wiki v0.10 · r3仕様（2026-11-16） · ローカルHTML／用語ごとに独立ページ</footer></div></main></div><script src="../assets/site.js"></script></body></html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="MarkNest開発資料の入口。Team Wiki、練習、設計資料、テスト、開発管理。">
+<title>MarkNest Developer Portal</title>
+<style>
+:root{color-scheme:light;--green:#174c38;--dark:#103627;--text:#1b2b23;--muted:#526b5d;--line:#d9e6dd;--bg:#f5f7f5}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic",Meiryo,sans-serif;line-height:1.75;background:var(--bg);color:var(--text)}
+a{color:#075f42;text-underline-offset:3px}a:hover{color:#103627}a:focus-visible{outline:3px solid #4c9773;outline-offset:3px}
+header{background:var(--dark);color:#fff;padding:38px 24px 32px}.wrap{max-width:1100px;margin:auto}.brand{font-size:13px;letter-spacing:.12em;color:#b7d8c4;font-weight:700}h1{font-size:clamp(28px,5vw,45px);line-height:1.25;margin:12px 0}header p{max-width:750px;color:#e0eee5;margin:10px 0 0}
+nav{display:flex;flex-wrap:wrap;gap:10px 18px;padding:18px 0;border-bottom:1px solid var(--line)}nav a{font-size:14px;font-weight:600}main{padding:0 24px 36px}.notice{font-size:14px;background:#e9f2eb;border:1px solid #d3e4d8;border-left:4px solid #538869;border-radius:6px;padding:14px 18px;margin:24px 0}.notice p{margin:3px 0}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.card{padding:24px;background:white;border:1px solid var(--line);border-radius:12px;min-width:0;scroll-margin-top:18px}.section-no{font-weight:700;color:#527b62;letter-spacing:.12em;font-size:12px}.card h2{font-size:21px;margin:5px 0}.section-desc{color:var(--muted);font-size:14px;margin:0 0 17px}.card ul{list-style:none;margin:0;padding:0}.card li{padding:11px 0;border-top:1px solid #e5ede7}.card li a{font-weight:600;display:inline-block;overflow-wrap:anywhere}.card li p{margin:3px 0 0;color:var(--muted);font-size:13px}.tag{font-size:10px;color:#426450;display:inline-block;background:#edf3ee;border-radius:4px;margin:0 0 0 8px;padding:1px 6px;vertical-align:middle;font-weight:400}footer{border-top:1px solid var(--line);font-size:12px;color:var(--muted);padding:18px 0;margin-top:25px}
+@media(max-width:740px){header{padding:28px 17px}main{padding:0 14px 24px}.cards{grid-template-columns:1fr}.card{padding:18px}nav{gap:8px 13px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="brand">MARKNEST / DEVELOPMENT DOCUMENTATION</div><h1>開発資料ポータル</h1><p>卒業制作 MarkNestのチーム開発に必要な資料へ、ここからアクセスできます。</p></div></header>
+<main class="wrap">
+<nav aria-label="資料の分類"><a href="#learn">開発ガイド</a><a href="#practice">練習</a><a href="#specs">仕様・設計</a><a href="#testing">テスト</a><a href="#work">開発管理</a></nav>
+<div class="notice"><strong>閲覧について</strong><p>このポータルとTeam Wikiは一般公開です。「要権限」の資料はPrivateリポジトリの正本へリンクします。GitHubへのログインと閲覧権限が必要です。Excel原本は必要に応じてダウンロードしてください。</p><p>仕様・実装・進捗の最新状態はGitHub上の正本を確認してください。ポータルはライブの進捗画面ではありません。</p></div>
+<div class="cards"><section class="card" id="learn"><div class="section-no">01</div><h2>開発ガイド・用語</h2><p class="section-desc">初めて参加する人も、作業中に確認したい人もここから。</p><ul><li><a href="team-wiki/index.html">MarkNest Team Wiki</a><span class="tag">公開HTML</span><p>12記事・57用語・全文検索</p></li>
+<li><a href="team-wiki/articles/first-task.html">最初の作業</a><span class="tag">公開HTML</span></li>
+<li><a href="team-wiki/articles/workflow.html">開発フロー</a><span class="tag">公開HTML</span></li>
+<li><a href="team-wiki/articles/issues-and-prs.html">IssueとPR</a><span class="tag">公開HTML</span></li>
+<li><a href="team-wiki/articles/setup.html">開発環境</a><span class="tag">公開HTML</span></li>
+<li><a href="team-wiki/terms/index.html">用語索引</a><span class="tag">公開HTML</span></li></ul></section>
+<section class="card" id="practice"><div class="section-no">02</div><h2>練習・ハンズオン</h2><p class="section-desc">本番に着手する前のGitHub操作と、設計書に基づく実装・テスト。</p><ul><li><a href="https://github.com/eash-misoni/marknest-git-practice/blob/main/README.md">練習リポジトリ・演習01</a><span class="tag">GitHub・要権限</span><p>自己紹介HTML、ブランチ、PR、レビュー</p></li>
+<li><a href="https://github.com/eash-misoni/marknest-git-practice/blob/main/exercise02/README.md">演習02：実装とテスト</a><span class="tag">GitHub・要権限</span><p>JSDocの型・既存テスト・自作テスト</p></li>
+<li><a href="https://github.com/eash-misoni/marknest-git-practice/blob/main/exercise02/requirements.md">演習02の仕様書</a><span class="tag">GitHub・要権限</span></li>
+<li><a href="https://github.com/eash-misoni/marknest-git-practice/blob/main/exercise02/internal-design.md">演習02の内部設計書</a><span class="tag">GitHub・要権限</span></li>
+<li><a href="https://github.com/eash-misoni/marknest-git-practice/blob/main/exercise02/test-spec.md">演習02のテスト仕様書</a><span class="tag">GitHub・要権限</span></li></ul></section>
+<section class="card" id="specs"><div class="section-no">03</div><h2>現行仕様・設計書</h2><p class="section-desc">実装の正本はPrivate側。版の違いに注意し、現行仕様の入口から確認します。</p><ul><li><a href="https://github.com/eash-misoni/MarkNest/blob/main/docs/current-spec.md">現行仕様の入口</a><span class="tag">GitHub・要権限</span></li>
+<li><a href="https://github.com/eash-misoni/MarkNest/blob/main/docs/specs/r3-2026-11-16/README.md">r3設計セット</a><span class="tag">GitHub・要権限</span></li>
+<li><a href="https://github.com/eash-misoni/MarkNest/blob/main/docs/specs/r3-2026-11-16/%E5%85%B1%E6%9C%89%E6%96%87%E6%9B%B8/MarkNest_%E3%83%81%E3%83%BC%E3%83%A0%E5%85%B1%E6%9C%89_%E7%B7%8F%E5%90%88%E4%BB%95%E6%A7%98%E3%82%AC%E3%82%A4%E3%83%89_2026-11-16_r3.md">総合仕様・設計理解ガイド</a><span class="tag">Markdown・要権限</span><p>仕様の本文と型・関数・DBの参照辞書</p></li>
+<li><a href="https://github.com/eash-misoni/MarkNest/blob/main/docs/specs/r3-2026-11-16/%E8%A8%AD%E8%A8%88%E6%9B%B8/8_DB%E8%A8%AD%E8%A8%88.xlsx">DB設計書</a><span class="tag">Excel・要権限</span></li>
+<li><a href="https://github.com/eash-misoni/MarkNest/blob/main/docs/specs/r3-2026-11-16/%E8%A8%AD%E8%A8%88%E6%9B%B8/9_1_%E5%86%85%E9%83%A8%E8%A8%AD%E8%A8%88%E6%9B%B8_%E3%83%87%E3%83%BC%E3%82%BF%E5%9E%8B%E3%83%BB%E3%82%AF%E3%83%A9%E3%82%B9%E5%AE%9A%E7%BE%A9.xlsx">データ型・クラス定義</a><span class="tag">Excel・要権限</span></li>
+<li><a href="https://github.com/eash-misoni/MarkNest/blob/main/docs/specs/r3-2026-11-16/%E8%A8%AD%E8%A8%88%E6%9B%B8/9_2_%E5%86%85%E9%83%A8%E8%A8%AD%E8%A8%88%E6%9B%B8_%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%83%BB%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E8%A9%B3%E7%B4%B0.xlsx">ファイル・モジュール詳細</a><span class="tag">Excel・要権限</span></li>
+<li><a href="https://github.com/eash-misoni/MarkNest/blob/main/docs/specs/r3-2026-11-16/%E8%A8%AD%E8%A8%88%E6%9B%B8/9_3_%E5%86%85%E9%83%A8%E8%A8%AD%E8%A8%88%E6%9B%B8_%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E5%81%B4.xlsx">サーバー側内部設計</a><span class="tag">Excel・要権限</span></li>
+<li><a href="https://github.com/eash-misoni/MarkNest/blob/main/docs/specs/r3-2026-11-16/%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E5%9B%B3/MarkNest_%E6%9B%B4%E6%96%B0%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E5%9B%B3_2026-11-16_r3.md">シーケンス図</a><span class="tag">Markdown・要権限</span></li></ul></section>
+<section class="card" id="testing"><div class="section-no">04</div><h2>テスト・品質管理</h2><p class="section-desc">CIでの自動検査とChrome実機などの確認を区別します。</p><ul><li><a href="https://github.com/eash-misoni/MarkNest/blob/main/docs/testing/README.md">テスト資料の入口</a><span class="tag">GitHub・要権限</span></li>
+<li><a href="https://github.com/eash-misoni/MarkNest/blob/main/docs/testing/ci-test-plan.xlsx">CIテスト設計書（CT）</a><span class="tag">Excel・要権限</span></li>
+<li><a href="https://github.com/eash-misoni/MarkNest/blob/main/docs/testing/system-test-spec.xlsx">システムテスト仕様書（ST）</a><span class="tag">Excel・要権限</span></li>
+<li><a href="team-wiki/articles/ai-review.html">AIとレビュー</a><span class="tag">公開HTML</span></li>
+<li><a href="https://github.com/eash-misoni/MarkNest/actions">GitHub Actionsの実行結果</a><span class="tag">GitHub・要権限</span></li></ul></section>
+<section class="card" id="work"><div class="section-no">05</div><h2>開発管理・ルール</h2><p class="section-desc">作業の依頼・担当・レビュー・進捗はGitHubの実データで確認します。</p><ul><li><a href="https://github.com/users/eash-misoni/projects/3/views/1">MarkNest Development（Project #3）</a><span class="tag">GitHub・要権限</span></li>
+<li><a href="https://github.com/eash-misoni/MarkNest/issues">Issues</a><span class="tag">GitHub・要権限</span></li>
+<li><a href="https://github.com/eash-misoni/MarkNest/pulls">Pull requests</a><span class="tag">GitHub・要権限</span></li>
+<li><a href="https://github.com/eash-misoni/MarkNest/blob/main/AGENTS.md">開発ルール（AGENTS.md）</a><span class="tag">GitHub・要権限</span></li>
+<li><a href="https://github.com/eash-misoni/MarkNest/blob/main/docs/roadmap.md">ロードマップ</a><span class="tag">GitHub・要権限</span></li>
+<li><a href="https://github.com/eash-misoni/MarkNest/blob/main/README.md">本体README</a><span class="tag">GitHub・要権限</span></li></ul></section></div>
+<footer>MarkNest Developer Portal · 公開用の案内と閲覧資料。仕様・設計・テストの正本はPrivateリポジトリで管理しています。</footer>
+</main>
+</body>
+</html>

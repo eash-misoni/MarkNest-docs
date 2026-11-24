@@ -1,0 +1,96 @@
+<!doctype html><html lang="ja" data-root="../"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#103627"><meta name="description" content="MarkNest Team Wiki：GitHubチーム開発の手順と用語をリンクで調べる r3準拠Wiki"><title>AI管理とコードレビュー | MarkNest Team Wiki</title><link rel="stylesheet" href="../assets/site.css"></head><body>
+<div class="menu-toggle"><button id="menu-btn" aria-label="目次を表示" aria-expanded="false">☰</button> MarkNest Team Wiki</div><div class="menu-shade" id="shade"></div>
+<div class="layout"><aside class="sidebar" id="sidebar"><a class="brand" href="../index.html"><span class="brand-mark">M</span><span><span class="brand-name" style="display:block">MarkNest</span><span class="brand-sub" style="display:block">TEAM WIKI · r3</span></span></a><a class="nav-link" href="../../index.html">開発資料ポータルへ</a><div class="nav-caption">開発ガイド</div><nav aria-label="ガイドの目次"><a href="../articles/overview.html" class="nav-link">はじめに</a><a href="../articles/first-task.html" class="nav-link">最初の作業</a><a href="../articles/workflow.html" class="nav-link">開発フロー</a><a href="../articles/issues-and-prs.html" class="nav-link">IssueとPR</a><a href="../articles/setup.html" class="nav-link">ローカル環境</a><a href="../articles/specs.html" class="nav-link">設計資料</a><a href="../articles/architecture.html" class="nav-link">役割・構成</a><a href="../articles/r3-rules.html" class="nav-link">r3の重要ルール</a><a href="../articles/sync.html" class="nav-link">AWS同期</a><a href="../articles/ai-review.html" class="nav-link current">AIとレビュー</a><a href="../articles/troubleshooting.html" class="nav-link">困ったとき</a><a href="../articles/safety-faq.html" class="nav-link">安全とFAQ</a></nav><div class="nav-caption">用語</div><nav><a class="nav-link" href="../terms/index.html">用語から探す（57語）</a></nav><div class="sidebar-foot">v0.10 · 用語リンク型 · 2026-11-18<br>元v0.6が未発見の再構築版。現在値はGitHubで確認。<br><a href="https://github.com/eash-misoni/MarkNest">MarkNestリポジトリ</a></div></aside>
+<main class="main"><div class="reading"><div class="top"><div class="crumb"><a href="../index.html">ホーム</a> / AI管理とコードレビュー</div><div class="search-wrap"><input id="site-search" class="search" type="search" placeholder="ガイド・用語を検索（Ctrl+K）" aria-label="Wiki内を検索" autocomplete="off"><div id="search-results" class="search-results" hidden></div></div></div><header class="hero"><div class="eyebrow">MARKNEST / TEAM HANDBOOK</div><h1>AI管理とコードレビュー</h1><p>本文の用語リンクから意味・画面での場所を確認できます。</p></header><div class="hint">知らない言葉は、本文中の<span class="term-link">点線付きリンク</span>をクリックすると解説ページへ移動できます。ブラウザの「戻る」で読んでいた位置へ戻れます。</div><article class="article"><p>MarkNestでは<strong><a class="term-link" href="../terms/chatgpt-work.html" title="用語解説：ChatGPT Work">ChatGPT Work</a>が<a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>・進捗の管理</strong>を補助し、<strong><a class="term-link" href="../terms/github-actions.html" title="用語解説：GitHub Actions">GitHub Actions</a>が<a class="term-link" href="../terms/ci.html" title="用語解説：CI（継続的インテグレーション）">CI</a></strong>を実行します。<a class="term-link" href="../terms/github.html" title="用語解説：GitHub">GitHub</a>では<strong><a class="term-link" href="../terms/codex.html" title="用語解説：Codex">Codex</a>による<a class="term-link" href="../terms/pull-request.html" title="用語解説：Pull Request（PR）">PR</a>自動<a class="term-link" href="../terms/code-review.html" title="用語解説：コードレビュー">コードレビュー</a></strong>も有効です（PR #16、#17、#22で実行を確認）。<strong>実装にどのAIを使うか、使わないかは各メンバーが決めます。</strong> このWikiは実装ツールを指定しません。</p>
+<h2>Workと日次タスク</h2>
+<p><a class="term-link" href="../terms/chatgpt-work.html" title="用語解説：ChatGPT Work">Work</a>は<a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>・<a class="term-link" href="../terms/pull-request.html" title="用語解説：Pull Request（PR）">PR</a>・<a class="term-link" href="../terms/ci.html" title="用語解説：CI（継続的インテグレーション）">CI</a>・設計を確認し、ロードマップの維持、依存関係の整理、<a class="term-link" href="../terms/ready.html" title="用語解説：Ready（レディ）">Ready</a>プールの不足検知、承認済み範囲での小Issue追加を補助します。<strong>未割り当てReady 5〜6件</strong>が目安です。</p>
+<p>毎日19時ごろ（JST）にChatGPTの<strong>日次管理・Ready補充タスク</strong>も設定されていますが、これは<strong>Workチャットを自動で起動するものではありません</strong>。実際の更新結果と権限・ログを確認せず、補充済みとは判断しません。</p>
+<h2>PRをmainへマージした後の文書確認</h2>
+<p><a class="term-link" href="../terms/pull-request.html" title="用語解説：Pull Request（PR）">PR</a>が<strong><a class="term-link" href="../terms/main.html" title="用語解説：mainブランチ">main</a>に<a class="term-link" href="../terms/merge.html" title="用語解説：merge（マージ）">マージ</a>されたとき</strong>は、「<strong>MarkNest マージ後の文書確認</strong>」タスクが差分を調べ、Team Wiki・README・仕様書・内部設計書・<a href="https://github.com/eash-misoni/MarkNest/blob/main/docs/testing/README.md">テスト資料（docs/testing/README.md）</a>などに説明の更新が必要かを確認します。main以外へのマージでは差分調査を行いません。</p>
+<ul>
+<li><strong>更新不要なら</strong>、通知や追加PRを作らず終了します。</li>
+<li><strong>更新が必要なら</strong>、原則として元のPRを根拠にした<strong>文書修正用ドラフトPR</strong>を作ります。仕様・設計と実装が食い違う場合は、実装に合わせて仕様を勝手に変更せず、<strong>人間に判断を求めます</strong>。修正PRのマージも人間が行います。</li>
+</ul>
+<p>日次の「<strong>管理・<a class="term-link" href="../terms/ready.html" title="用語解説：Ready（レディ）">Ready</a>補充</strong>」は<a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>の進捗・作業の詰まり・着手できるReady Issueの不足を点検する仕事です。一方、マージ後のタスクは<strong>そのPRの変更が資料に影響するか</strong>を調べる仕事です。<strong>メンバーは通常どちらも手動で起動する必要はありません。</strong> ただし、自分のPRには変更内容・テストID・結果・未確認事項を書き、仕様の疑問点はIssueやレビューで相談してください（<a href="issues-and-prs.html">IssueとPR</a>）。</p>
+<h2>Codexレビューに期待する観点</h2>
+<p><a class="term-link" href="../terms/pull-request.html" title="用語解説：Pull Request（PR）">PR</a>の差分だけでなく関連コード・対象<a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>・<a href="https://github.com/eash-misoni/MarkNest/blob/main/docs/specs/r3-2026-11-16/README.md">r3設計資料</a>・<code>AGENTS.md</code>を照らし、<strong>具体的な不具合や保守上の問題があるときに</strong>指摘します。重要度の目安は次のとおりです。</p>
+<table>
+<thead>
+<tr>
+<th>観点</th>
+<th>見てほしい内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仕様・公開契約</td>
+<td>Issueの完成条件と<a class="term-link" href="../terms/r3.html" title="用語解説：r3（設計の版）">r3</a>に一致するか。別<a class="term-link" href="../terms/module.html" title="用語解説：モジュール">モジュール</a>の契約・動作を壊さないか</td>
+</tr>
+<tr>
+<td>モジュール配置・責務</td>
+<td><a class="term-link" href="../terms/ui.html" title="用語解説：UI（ユーザーインターフェース）">UI</a>がDBやChrome操作を直接抱えるなど、責務境界が崩れていないか。<a class="term-link" href="../terms/function.html" title="用語解説：関数">関数</a>が無関係な仕事を混在させていないか</td>
+</tr>
+<tr>
+<td>可読性・保守性</td>
+<td>意味が分かる名前か。重複、不必要な複雑さ、過剰な抽象化がないか。初心者でも変更箇所を追えるか</td>
+</tr>
+<tr>
+<td>状態・副作用</td>
+<td>仮変更と正式保存の区別、Chromeの実操作タイミング、対象外データへの書込み、成功・失敗時の整合性</td>
+</tr>
+<tr>
+<td>非同期・例外処理</td>
+<td><code>await</code>漏れ、古い応答、二重実行、途中失敗での不整合、想定外例外の握りつぶし</td>
+</tr>
+<tr>
+<td>テストの質</td>
+<td>テストがあるだけでなく、要求・期待結果を実際に検証しているか。0件・不正入力・失敗・再試行など重要な境界が不足していないか</td>
+</tr>
+<tr>
+<td>安全性</td>
+<td>権限の過剰付与、秘密情報の露出、別アカウント混入、破壊的変更、外部入力の無検証利用</td>
+</tr>
+</tbody>
+</table>
+<p>例えば、<strong>削除した<a class="term-link" href="../terms/group.html" title="用語解説：グループ">グループ</a>の<a class="term-link" href="../terms/target.html" title="用語解説：TARGET">TARGET</a>は<a class="term-link" href="../terms/auto.html" title="用語解説：AUTO">AUTO</a>に戻すが、<a class="term-link" href="../terms/reference.html" title="用語解説：REFERENCE">REFERENCE</a>はChrome上では変更しない</strong>、<strong>設定同期は一覧一式</strong>というr3の境界を守ることは、命名の好みより優先です。MarkNestでの具体的な禁止事項は<a href="r3-rules.html">r3の重要ルール</a>と<a href="sync.html">AWS同期</a>にあります。</p>
+<h2>指摘を3段階に分ける</h2>
+<table>
+<thead>
+<tr>
+<th>区分</th>
+<th>意味</th>
+<th><a class="term-link" href="../terms/pull-request.html" title="用語解説：Pull Request（PR）">PR</a>での扱い</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>必須修正</strong></td>
+<td>仕様違反、再現可能なバグ、データ損失・認証・安全性の問題、実害のある重大な設計ミス</td>
+<td>原則<a class="term-link" href="../terms/merge.html" title="用語解説：merge（マージ）">マージ</a>前に解決</td>
+</tr>
+<tr>
+<td><strong>改善推奨</strong></td>
+<td>実際の保守に影響する責務の混在、複雑な重複、重要テストの不足</td>
+<td>影響と工数を見てPR内で直すか別<a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>へ</td>
+</tr>
+<tr>
+<td><strong>学習メモ</strong></td>
+<td>理解しやすい別の書き方、軽微な命名・整理、好みが分かれる設計案</td>
+<td>修正は任意。マージを止めない</td>
+</tr>
+</tbody>
+</table>
+<p><strong>指摘には「場所／なぜ困るか／どう直すか／根拠」を短く示し、可能なら小さな修正例を付けます。</strong> 初心者が理解できないまま全面的に書き換える指示や、単なる趣味のリファクタリングを大量に出す運用は避けます。仕様書や関連ファイルを確認できていない場合は、確認したと偽らず未確認と記します。<a class="term-link" href="../terms/codex.html" title="用語解説：Codex">Codex</a>の「指摘なし」は品質保証ではありません。</p>
+<h2>CI・人間によるレビューと組み合わせる</h2>
+<p><a class="term-link" href="../terms/codex.html" title="用語解説：Codex">Codex</a>レビューだけでなく、<strong><a class="term-link" href="../terms/ci.html" title="用語解説：CI（継続的インテグレーション）">CI</a>の自動検査、<a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>の完成条件に対する動作確認、担当者以外の人間による確認</strong>を必須の品質管理として扱います。特にDB・Chrome書込み・認証・同期などは失敗系テストと実機/結合検証の有無も確認します。テスト結果や実機確認を行っていないのに「検証済み」と書かないでください。</p>
+<h2>人間による判断が必要なこと</h2>
+<ul>
+<li>新機能、<a class="term-link" href="../terms/mvp.html" title="用語解説：MVP">MVP</a>範囲・重要仕様・公開<a class="term-link" href="../terms/api.html" title="用語解説：API">API</a>やDB契約の変更</li>
+<li>大幅な優先順位変更、他人の担当の一方的変更</li>
+<li><a class="term-link" href="../terms/pull-request.html" title="用語解説：Pull Request（PR）">PR</a>の<a class="term-link" href="../terms/merge.html" title="用語解説：merge（マージ）">マージ</a>、<a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>の<a class="term-link" href="../terms/done.html" title="用語解説：Done（受け入れ完了）">Done</a>・Closeの受け入れ</li>
+<li><a class="term-link" href="../terms/aws.html" title="用語解説：AWS">AWS</a>実環境の変更や、Chrome実データへの破壊的操作</li>
+</ul>
+<p>通常のIssue起票や<a class="term-link" href="../terms/ready.html" title="用語解説：Ready（レディ）">Ready</a>補充は<strong>承認済み範囲に限って</strong>管理AIが行えますが、Doneやマージの独断実行はしません。</p>
+<h2>Projectsの管理コマンドは通常作業と分ける</h2>
+<p>管理用<a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>コメントには<code>/marknest-project snapshot|probe|plan|apply</code>という専用経路があります。これは<strong><a class="term-link" href="../terms/chatgpt-work.html" title="用語解説：ChatGPT Work">Work</a>・権限者向けの管理運用</strong>です。通常メンバーは<a class="term-link" href="../terms/project.html" title="用語解説：Project（GitHub Projects）">Projects</a>画面とIssueで着手・進捗を管理すればよく、コメントコマンドを日常的に実行する必要はありません。</p>
+<nav class="footnav" aria-label="関連記事"><span><a href="sync.html">← AWS同期</a></span><span><a href="troubleshooting.html">困ったとき →</a></span></nav></article><footer class="footer">MarkNest Team Wiki v0.10 · r3仕様（2026-11-16） · ローカルHTML／用語ごとに独立ページ</footer></div></main></div><script src="../assets/site.js"></script></body></html>

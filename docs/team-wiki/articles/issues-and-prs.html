@@ -1,0 +1,70 @@
+<!doctype html><html lang="ja" data-root="../"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#103627"><meta name="description" content="MarkNest Team Wiki：GitHubチーム開発の手順と用語をリンクで調べる r3準拠Wiki"><title>IssueとPull Requestの進め方 | MarkNest Team Wiki</title><link rel="stylesheet" href="../assets/site.css"></head><body>
+<div class="menu-toggle"><button id="menu-btn" aria-label="目次を表示" aria-expanded="false">☰</button> MarkNest Team Wiki</div><div class="menu-shade" id="shade"></div>
+<div class="layout"><aside class="sidebar" id="sidebar"><a class="brand" href="../index.html"><span class="brand-mark">M</span><span><span class="brand-name" style="display:block">MarkNest</span><span class="brand-sub" style="display:block">TEAM WIKI · r3</span></span></a><a class="nav-link" href="../../index.html">開発資料ポータルへ</a><div class="nav-caption">開発ガイド</div><nav aria-label="ガイドの目次"><a href="../articles/overview.html" class="nav-link">はじめに</a><a href="../articles/first-task.html" class="nav-link">最初の作業</a><a href="../articles/workflow.html" class="nav-link">開発フロー</a><a href="../articles/issues-and-prs.html" class="nav-link current">IssueとPR</a><a href="../articles/setup.html" class="nav-link">ローカル環境</a><a href="../articles/specs.html" class="nav-link">設計資料</a><a href="../articles/architecture.html" class="nav-link">役割・構成</a><a href="../articles/r3-rules.html" class="nav-link">r3の重要ルール</a><a href="../articles/sync.html" class="nav-link">AWS同期</a><a href="../articles/ai-review.html" class="nav-link">AIとレビュー</a><a href="../articles/troubleshooting.html" class="nav-link">困ったとき</a><a href="../articles/safety-faq.html" class="nav-link">安全とFAQ</a></nav><div class="nav-caption">用語</div><nav><a class="nav-link" href="../terms/index.html">用語から探す（57語）</a></nav><div class="sidebar-foot">v0.10 · 用語リンク型 · 2026-11-18<br>元v0.6が未発見の再構築版。現在値はGitHubで確認。<br><a href="https://github.com/eash-misoni/MarkNest">MarkNestリポジトリ</a></div></aside>
+<main class="main"><div class="reading"><div class="top"><div class="crumb"><a href="../index.html">ホーム</a> / IssueとPull Requestの進め方</div><div class="search-wrap"><input id="site-search" class="search" type="search" placeholder="ガイド・用語を検索（Ctrl+K）" aria-label="Wiki内を検索" autocomplete="off"><div id="search-results" class="search-results" hidden></div></div></div><header class="hero"><div class="eyebrow">MARKNEST / TEAM HANDBOOK</div><h1>IssueとPull Requestの進め方</h1><p>本文の用語リンクから意味・画面での場所を確認できます。</p></header><div class="hint">知らない言葉は、本文中の<span class="term-link">点線付きリンク</span>をクリックすると解説ページへ移動できます。ブラウザの「戻る」で読んでいた位置へ戻れます。</div><article class="article"><p>以下は<strong>実際の作業開始後</strong>に使う手順です。知らない用語は、その場の用語リンクから確認してください。</p>
+<h2>Issueを開いたら読む順番</h2>
+<ol>
+<li><strong>目的</strong>：何ができるようになればよいのか。</li>
+<li><strong>入力と出力</strong>：どのデータ型・公開<a class="term-link" href="../terms/function.html" title="用語解説：関数">関数</a>・画面を使うか。</li>
+<li><strong>今回やらないこと</strong>：意図しない仕様拡大を防ぐ。</li>
+<li><strong>依存関係</strong>：前の作業が必要か。<a class="term-link" href="../terms/mock.html" title="用語解説：モック（mock）">モック</a>で先に進められるか。</li>
+<li><strong>完成条件</strong>：どのテスト・操作・ログで合格と言えるか。</li>
+<li><strong>設計資料</strong>：<a class="term-link" href="../terms/r3.html" title="用語解説：r3（設計の版）">r3</a>総合ガイドの章と、必要ならExcelのシート名。</li>
+<li><strong>テスト資料</strong>：完成条件に対応するテストケースがあるかを確認する。</li>
+</ol>
+<p>疑問点を<a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>へ書くときは「現状」「期待する動作」「確認したコード・資料」「何を決めてほしいか」を分けると伝わりやすくなります。</p>
+<h2>Issue着手時：テスト資料を探す</h2>
+<p><a href="https://github.com/eash-misoni/MarkNest/blob/main/docs/testing/README.md">テスト資料の入口（docs/testing/README.md）</a>から、目的に応じて次の2冊を確認します。</p>
+<table>
+<thead>
+<tr>
+<th>資料</th>
+<th>どんなときに使う？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a class="term-link" href="../terms/ci.html" title="用語解説：CI（継続的インテグレーション）">CI</a>テスト設計書</strong> <code>ci-test-plan.xlsx</code>（<code>CT-</code>）</td>
+<td>担当する<a class="term-link" href="../terms/function.html" title="用語解説：関数">関数</a>・公開契約・失敗条件について、自動テストの候補と期待結果を確認するとき。<strong>設計済みのケースすべてがコード化・実行済みとは限りません。</strong></td>
+</tr>
+<tr>
+<td><strong>システムテスト仕様書</strong> <code>system-test-spec.xlsx</code>（<code>ST-</code>）</td>
+<td>画面操作や機能全体の振る舞いをChrome実機などで確認するとき。学校提出用の資料で、CIとは別に実行条件と結果を管理します。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>探し方：</strong> <a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>の<strong>完成条件</strong>を読む → 対象の<strong>操作・関数・状態変化</strong>を特定する → 2冊の該当する<code>ST-</code>／<code>CT-</code>ケースを探す → テスト方法と期待結果を確認する。該当IDが見つからない場合は、勝手に結果を埋めず、Issueや<a class="term-link" href="../terms/pull-request.html" title="用語解説：Pull Request（PR）">PR</a>で「該当ケース未特定／追加案」として相談します。仕様とテストの期待値が食い違う場合も独断で書き換えません。</p>
+<p>このリンクは<a class="term-link" href="../terms/github.html" title="用語解説：GitHub">GitHub</a>上の正本を開きます。ローカルでWikiを開いていても使えますが、ネット接続とPrivate<a class="term-link" href="../terms/repository.html" title="用語解説：リポジトリ（Repository）">リポジトリ</a>へのアクセス権が必要です。</p>
+<h2>変更の粒度</h2>
+<p>原則として<strong>1 <a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a> = 1<a class="term-link" href="../terms/branch.html" title="用語解説：ブランチ（branch）">ブランチ</a> = 1<a class="term-link" href="../terms/pull-request.html" title="用語解説：Pull Request（PR）">PR</a></strong>。ただしファイル数を機械的に小さくするのではなく、動く成果としてテストできる単位にします。関連のない修正は別Issueへ。新たな公開<a class="term-link" href="../terms/api.html" title="用語解説：API">API</a>・DB契約が必要なら、先に関係する担当者と確認します。</p>
+<h2>Gitの操作例</h2>
+<pre><code class="language-bash">git switch main
+git pull --ff-only
+git switch -c feat/issue-XX-short-description
+# 編集・テストした後
+git status
+git add &lt;変更したファイル&gt;
+git commit -m "feat: describe change for issue XX"
+git push -u origin feat/issue-XX-short-description
+</code></pre>
+<p><code>git switch main</code>は<a class="term-link" href="../terms/main.html" title="用語解説：mainブランチ">main</a>へ移動、<code>git pull --ff-only</code>は<a class="term-link" href="../terms/github.html" title="用語解説：GitHub">GitHub</a>側の最新状態を取り込み、<code>git switch -c</code>は新しい作業<a class="term-link" href="../terms/branch.html" title="用語解説：ブランチ（branch）">ブランチ</a>を作成します。<code>git add</code>で記録対象を選び、<code>git commit</code>で変更履歴を作り、<code>git push</code>でGitHubへ送ります。<strong><a class="term-link" href="../terms/git.html" title="用語解説：Git">Git</a>の<a href="../terms/pull.html">pull（プル）</a>はリモートから取得する操作で、<a class="term-link" href="../terms/pull-request.html" title="用語解説：Pull Request（PR）">Pull Request</a>（PR）とは別</strong>です。</p>
+<p><code>XX</code>は実際の<a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>番号に置き換えます。既存のブランチ運用や<a class="term-link" href="../terms/repository.html" title="用語解説：リポジトリ（Repository）">リポジトリ</a>の指示が異なる場合はそちらを優先します。<a class="term-link" href="../terms/push.html" title="用語解説：push（プッシュ）">push</a>後、GitHubでPRを作り、関連Issueを記載します。</p>
+<h2>PR本文の最小テンプレート</h2>
+<pre><code class="language-text">関連Issue: #XX
+目的: 何を実現する変更か
+実装したこと: どの機能・ファイルを変更したか
+対象外: 今回やっていないこと
+確認: 実行したコマンド／Chromeで試した操作／期待と実際
+仕様根拠: r3の章・型・関数・シート
+未確認: AWS実機、権限、異常系など残る事項
+</code></pre>
+<h3>テストIDと結果の書き方（記入例）</h3>
+<p>次は<strong>説明用の架空ID・架空の結果</strong>です。実際の<a class="term-link" href="../terms/pull-request.html" title="用語解説：Pull Request（PR）">PR</a>では、テスト設計書に載っているIDと<strong>本当に実施した結果</strong>に置き換えてください。</p>
+<pre><code class="language-text">関連Issue: #XX（自分のIssue番号に置換）
+関連テスト: CT-EXAMPLE-01（仮：関数の空入力）／ST-EXAMPLE-01（仮：画面表示）
+実施したテスト: npm run check（ローカル）、CT-EXAMPLE-01相当の自動テスト
+結果: 上記の実行は合格（仮の記入例。PRのCI結果は別途Checksで確認）
+未確認: ST-EXAMPLE-01（Chrome実機テストは未実施。環境準備後に確認）
+</code></pre>
+<p><code>CT-</code>の対応テストコードがまだなければ「テストコード未作成」、<code>ST-</code>を実行していなければ「未実施」と記します。<strong><a class="term-link" href="../terms/ci.html" title="用語解説：CI（継続的インテグレーション）">CI</a>成功は、Chrome実機や<a class="term-link" href="../terms/aws.html" title="用語解説：AWS">AWS</a>で動いたことの保証ではありません。</strong> 実機検証の対象と未検証をPR本文で区別しましょう。<a class="term-link" href="../terms/codex.html" title="用語解説：Codex">Codex</a>の自動レビューでは不具合・設計の責務・可読性・テストの妥当性を確認します（<a href="ai-review.html">AIとコードレビュー</a>）。指摘は必須修正／改善推奨／学習メモに分け、軽微な提案を無条件の<a class="term-link" href="../terms/merge.html" title="用語解説：merge（マージ）">マージ</a>条件にしません。人の確認と権限者によるマージを待ちます。</p>
+<nav class="footnav" aria-label="関連記事"><span><a href="workflow.html">← 開発フロー</a></span><span><a href="setup.html">ローカル環境 →</a></span></nav></article><footer class="footer">MarkNest Team Wiki v0.10 · r3仕様（2026-11-16） · ローカルHTML／用語ごとに独立ページ</footer></div></main></div><script src="../assets/site.js"></script></body></html>

@@ -1,0 +1,52 @@
+<!doctype html><html lang="ja" data-root="../"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#103627"><meta name="description" content="MarkNest Team Wiki：GitHubチーム開発の手順と用語をリンクで調べる r3準拠Wiki"><title>はじめに：このWikiの役割 | MarkNest Team Wiki</title><link rel="stylesheet" href="../assets/site.css"></head><body>
+<div class="menu-toggle"><button id="menu-btn" aria-label="目次を表示" aria-expanded="false">☰</button> MarkNest Team Wiki</div><div class="menu-shade" id="shade"></div>
+<div class="layout"><aside class="sidebar" id="sidebar"><a class="brand" href="../index.html"><span class="brand-mark">M</span><span><span class="brand-name" style="display:block">MarkNest</span><span class="brand-sub" style="display:block">TEAM WIKI · r3</span></span></a><a class="nav-link" href="../../index.html">開発資料ポータルへ</a><div class="nav-caption">開発ガイド</div><nav aria-label="ガイドの目次"><a href="../articles/overview.html" class="nav-link current">はじめに</a><a href="../articles/first-task.html" class="nav-link">最初の作業</a><a href="../articles/workflow.html" class="nav-link">開発フロー</a><a href="../articles/issues-and-prs.html" class="nav-link">IssueとPR</a><a href="../articles/setup.html" class="nav-link">ローカル環境</a><a href="../articles/specs.html" class="nav-link">設計資料</a><a href="../articles/architecture.html" class="nav-link">役割・構成</a><a href="../articles/r3-rules.html" class="nav-link">r3の重要ルール</a><a href="../articles/sync.html" class="nav-link">AWS同期</a><a href="../articles/ai-review.html" class="nav-link">AIとレビュー</a><a href="../articles/troubleshooting.html" class="nav-link">困ったとき</a><a href="../articles/safety-faq.html" class="nav-link">安全とFAQ</a></nav><div class="nav-caption">用語</div><nav><a class="nav-link" href="../terms/index.html">用語から探す（57語）</a></nav><div class="sidebar-foot">v0.10 · 用語リンク型 · 2026-11-18<br>元v0.6が未発見の再構築版。現在値はGitHubで確認。<br><a href="https://github.com/eash-misoni/MarkNest">MarkNestリポジトリ</a></div></aside>
+<main class="main"><div class="reading"><div class="top"><div class="crumb"><a href="../index.html">ホーム</a> / はじめに：このWikiの役割</div><div class="search-wrap"><input id="site-search" class="search" type="search" placeholder="ガイド・用語を検索（Ctrl+K）" aria-label="Wiki内を検索" autocomplete="off"><div id="search-results" class="search-results" hidden></div></div></div><header class="hero"><div class="eyebrow">MARKNEST / TEAM HANDBOOK</div><h1>はじめに：このWikiの役割</h1><p>本文の用語リンクから意味・画面での場所を確認できます。</p></header><div class="hint">知らない言葉は、本文中の<span class="term-link">点線付きリンク</span>をクリックすると解説ページへ移動できます。ブラウザの「戻る」で読んでいた位置へ戻れます。</div><article class="article"><p><strong>初めから順番に読む必要はありません。</strong> 作業中に分からない用語が出てきたら、その言葉のリンクから独立した解説ページへ進み、確認後に戻ってください。</p>
+<p><strong>MarkNest Team Wiki は、チームで開発を進めるときの「行動手順」をまとめた案内です。</strong> 仕様のすべてを転載する文書ではありません。仕様や型の詳細は<a class="term-link" href="../terms/github.html" title="用語解説：GitHub">GitHub</a>の<a class="term-link" href="../terms/r3.html" title="用語解説：r3（設計の版）">r3</a>資料、今の作業は<a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>、現在の<a class="term-link" href="../terms/status.html" title="用語解説：Status（ステータス）">Status</a>は<a class="term-link" href="../terms/project.html" title="用語解説：Project（GitHub Projects）">Projects</a>を確認します。</p>
+<blockquote>
+<p><strong>この版について：</strong> 過去のTeam Wiki v0.6の完成HTMLは見つかりませんでした。これは過去版を完全に復元したものではなく、<strong>2026年11月18日に現行のr3仕様とGitHubの運用文書から作り直した「v0.9・再構築版」</strong>です。以前の文面・ページ数・見た目が同一とは限りません。</p>
+</blockquote>
+<h2>迷ったら最初に開くもの</h2>
+<table>
+<thead>
+<tr>
+<th>知りたいこと</th>
+<th>正本・確認先</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>何を作るか／何が確定しているか</td>
+<td><a href="https://github.com/eash-misoni/MarkNest/blob/main/docs/current-spec.md">現行仕様の入口</a> → <a href="https://github.com/eash-misoni/MarkNest/blob/main/docs/specs/r3-2026-11-16/README.md">r3詳細設計</a></td>
+</tr>
+<tr>
+<td>今、何を担当できるか</td>
+<td><a href="https://github.com/users/eash-misoni/projects/3/views/1">MarkNest Development / Projects #3</a> の未割り当て <a class="term-link" href="../terms/ready.html" title="用語解説：Ready（レディ）">Ready</a></td>
+</tr>
+<tr>
+<td>何を満たせば完成か</td>
+<td><a href="https://github.com/eash-misoni/MarkNest/issues">GitHub Issues</a> の対象<a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>本文</td>
+</tr>
+<tr>
+<td>どう実装・レビューするか</td>
+<td><a href="https://github.com/eash-misoni/MarkNest/blob/main/AGENTS.md">AGENTS.md</a></td>
+</tr>
+<tr>
+<td>AI管理の権限・運用</td>
+<td><a href="https://github.com/eash-misoni/MarkNest/blob/main/docs/ai-management.md">ai-management.md</a></td>
+</tr>
+<tr>
+<td><a class="term-link" href="../terms/mvp.html" title="用語解説：MVP">MVP</a>までの全体計画</td>
+<td><a href="https://github.com/eash-misoni/MarkNest/blob/main/docs/roadmap.md">roadmap.md</a></td>
+</tr>
+</tbody>
+</table>
+<h2>このWikiの使い方</h2>
+<ul>
+<li><strong>初参加</strong>：次の<a href="first-task.html">最初の作業</a>・<a href="setup.html">ローカル環境</a>・<a href="issues-and-prs.html">IssueとPR</a>を読む。</li>
+<li><strong>作業前</strong>：<a href="issues-and-prs.html">IssueとPR</a>・<a href="r3-rules.html">r3の重要ルール</a>・<a href="specs.html">設計資料</a>を確認する。</li>
+<li><strong>詰まったとき</strong>：<a href="troubleshooting.html">困ったとき</a>と<a href="ai-review.html">AIとコードレビュー</a>を使う。発生したエラーや判断待ちは<a class="term-link" href="../terms/issue.html" title="用語解説：Issue（イシュー）">Issue</a>へ残す。</li>
+<li><strong>今日の進捗</strong>：このHTMLはオフライン配布用の静的資料です。現在の担当・<a class="term-link" href="../terms/ci.html" title="用語解説：CI（継続的インテグレーション）">CI</a>・<a class="term-link" href="../terms/ready.html" title="用語解説：Ready（レディ）">Ready</a>件数を表示するライブ画面ではありません。現在値は必ず<a class="term-link" href="../terms/github.html" title="用語解説：GitHub">GitHub</a>で確認してください。</li>
+</ul>
+<p>&lt;small&gt;本Wikiの内容基準：2026-11-16 <a class="term-link" href="../terms/r3.html" title="用語解説：r3（設計の版）">r3</a>、GitHubのREADME・AGENTS・ai-management・roadmap（2026-11-18照合）。配布後に仕様が変わった場合は正本を優先してください。&lt;/small&gt;</p>
+<nav class="footnav" aria-label="関連記事"><span><a href="../index.html">← ホーム</a></span><span><a href="first-task.html">最初の作業 →</a></span></nav></article><footer class="footer">MarkNest Team Wiki v0.10 · r3仕様（2026-11-16） · ローカルHTML／用語ごとに独立ページ</footer></div></main></div><script src="../assets/site.js"></script></body></html>
